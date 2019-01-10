@@ -6,6 +6,7 @@ class Bonus
     @x = 0
     @y = 0
     @status = 'good'
+    @music = Music.new('../sound/' + @status + '-bonus.mp3')
   end
 
   def draw
@@ -17,5 +18,17 @@ class Bonus
       clip_width: @clip_width, time: 100, loop: true
     )
     @sprite.play
+  end
+
+  def init_bonus
+    @status = if rand(11) <= 6
+                'good'
+              else
+                'bad'
+              end
+    @rnd = Random.new
+    @start_time = Time.now.to_i
+    @bonus_time = @rnd.rand(60..120)
+    @finish_time = Time.now.to_i
   end
 end

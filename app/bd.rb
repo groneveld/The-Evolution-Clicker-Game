@@ -31,4 +31,14 @@ class DataBase
       end
     end
   end
+
+  def player_update(player)
+    @players_conn.exec("SELECT * FROM users WHERE name='#{player.name}'") do |result|
+      if !result.values.empty?
+        @players_conn.exec("UPDATE users SET level = #{player.evolution_level}, dna = #{player.summary_dna}, factor = #{player.factor} WHERE name = '#{player.name}'")
+      else
+        @players_conn.exec("INSERT INTO users VALUES ('#{player.name}', #{player.evolution_level}, #{player.summary_dna}, #{player.factor})")
+      end
+    end
+  end
 end

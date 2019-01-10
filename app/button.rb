@@ -19,7 +19,7 @@ class Button < Window
     @warning = Text.new('')
     @music = Music.new('../sound/level-up.mp3')
     @music.volume = 60
-   end
+  end
 
   def show
     @rect.remove
@@ -64,25 +64,25 @@ class Button < Window
   end
 
   def click(x, y, game)
-    if x > @x && x < @x + @width && y > @y && y < @y + @height
-      if game.player.evolution_level <= 22
-        if @status == 'locked'
-          show_warning
-        else
-          game.player.levels_up
-          game.creature.evolve(game.player.evolution_level)
-          @music.play
-          game.sprite_invalidate
-        end
+    return unless x > @x && x < @x + @width && y > @y && y < @y + @height
+
+    if game.player.evolution_level <= 22
+      if @status == 'locked'
+        show_warning
       else
-        Text.new(
-          'New levels coming soon...',
-          x: 150, y: 400,
-          size: 20,
-          color: '#D5F800',
-          z: 10
-        )
+        game.player.levels_up
+        game.creature.evolve(game.player.evolution_level)
+        @music.play
+        game.sprite_invalidate
       end
+    else
+      Text.new(
+        'New levels coming soon...',
+        x: 150, y: 400,
+        size: 20,
+        color: '#D5F800',
+        z: 10
+      )
     end
   end
 end

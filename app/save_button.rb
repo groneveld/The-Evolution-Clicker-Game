@@ -1,5 +1,5 @@
 # class Save_button
-class Save_button < Window
+class SaveButton < Window
   def initialize
     @x = 700
     @y = 380
@@ -43,9 +43,9 @@ class Save_button < Window
   end
 
   def click(x, y, game)
-    if x > @x && x < @x + @width && y > @y && y < @y + @height
-      game.player.db_update
-      show_warning
-    end
+    return unless x > @x && x < @x + @width && y > @y && y < @y + @height
+
+    game.player.db_update
+    show_warning
   end
 end

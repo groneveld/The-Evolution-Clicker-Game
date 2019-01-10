@@ -33,10 +33,10 @@ class Bonus
       @start_time = Time.now.to_i
       @bonus_time = @rnd.rand(60..120)
     end
-    if Time.now.to_i >= @finish_time && @is_on_screen == true
-      remove
-      init_bonus
-    end
+    return unless Time.now.to_i >= @finish_time && @is_on_screen == true
+
+    remove
+    init_bonus
   end
 
   def init_bonus
@@ -52,18 +52,18 @@ class Bonus
   end
 
   def click(x, y, player, value)
-    if x > @x && x < @x + 150 && y > @y && y < @y + 150
-      return unless is_on_screen
+    return unless x > @x && x < @x + 150 && y > @y && y < @y + 150
 
-      if @status == 'good'
-        player.summary_dna += value * 10
-      else
-        player.summary_dna = 0
-      end
-      @music = Music.new('../sound/' + @status + '-bonus.mp3')
-      @music.play
-      remove
+    return unless is_on_screen
+
+    if @status == 'good'
+      player.summary_dna += value * 10
+    else
+      player.summary_dna = 0
     end
+    @music = Music.new('../sound/' + @status + '-bonus.mp3')
+    @music.play
+    remove
   end
 
   def remove

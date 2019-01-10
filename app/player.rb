@@ -12,8 +12,7 @@ class Player
   def initialize(name)
     @name = name
     @summary_dna = 0
-    @evolution_level = 1
-    @factor = 1
+    @evolution_level = @factor = 1
     @db = DataBase.new
     if @db.player_get(@name)
       @evolution_level = @db.level
@@ -44,6 +43,10 @@ class Player
     @name_of_creature = @db.creatures[@evolution_level]
   end
 
+  def db_update
+    @db.player_update(self)
+  end
+
   def draw_require
     @require_text.remove
     @require_text = Text.new(
@@ -61,7 +64,7 @@ class Player
     else
       @evolve_button.draw_lock
     end
- end
+  end
 
   def levels_up
     @evolution_level += 1

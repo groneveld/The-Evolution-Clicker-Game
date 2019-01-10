@@ -24,9 +24,9 @@ class MySprite
   end
 
   def click(x, y)
-    if x > @x && x < @x + 150 && y > @y && y < @y + 150
-      @music.play
-      true
-    end
+    return unless x > @x && x < @x + 150 && y > @y && y < @y + 150
+
+    @music.play
+    true
   end
 end

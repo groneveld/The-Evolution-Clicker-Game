@@ -1,15 +1,20 @@
 # class Player
 class Player
-	attr_accessor :evolution_level,
+  attr_accessor :evolution_level,
                 :summary_dna,
                 :dna_required,
-                :factor
+                :factor,
+                :name_of_creature,
+                :evolve_button,
+                :db,
+                :name
 
   def initialize(name)
     @name = name
     @summary_dna = 0
     @evolution_level = 1
     @factor = 1
+    @db = DataBase.new
     @dna_required = @evolution_level * 10 * @factor
     @require_text = Text.new('')
     @evolve_button = Button.new

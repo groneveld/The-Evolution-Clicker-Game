@@ -22,4 +22,11 @@ class MySprite
     )
     @sprite.play
   end
+
+  def click(x, y)
+    if x > @x && x < @x + 150 && y > @y && y < @y + 150
+      @music.play
+      true
+    end
+  end
 end

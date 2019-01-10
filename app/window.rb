@@ -12,6 +12,7 @@ class MyWindow < Window
     @user_label = Text.new('')
     @username_on_screen = Text.new('')
     @hello_text = Text.new('')
+    @save_button = Save_button.new
     draw_user_label
     draw_username_input_place
   end

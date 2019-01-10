@@ -65,13 +65,15 @@ class Button < Window
 
   def click(x, y, game)
     if x > @x && x < @x + @width && y > @y && y < @y + @height
-      if @status == 'locked'
-        show_warning
-      else
-        game.player.levels_up
-        game.creature.evolve(game.player.evolution_level)
-        @music.play
-        game.sprite_invalidate
+      if game.player.evolution_level <= 22
+        if @status == 'locked'
+          show_warning
+        else
+          game.player.levels_up
+          game.creature.evolve(game.player.evolution_level)
+          @music.play
+          game.sprite_invalidate
+        end
       end
     end
   end

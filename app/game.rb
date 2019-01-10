@@ -9,7 +9,7 @@ class Game
     @player = Player.new(name)
     @sprite = MySprite.new
     sprite_invalidate
-    @creature = Creature.new(1000)
+    @creature = Creature.new(10000)
     @bonus = Bonus.new
     @bonus.init_bonus
   end

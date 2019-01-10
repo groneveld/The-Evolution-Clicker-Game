@@ -6,7 +6,7 @@ class MyWindow < Window
                 :is_enter,
                 :save_button
 
-	def initialize
+  def initialize
     Image.new('../images/background.png')
     @username = ''
     @is_enter = true
@@ -15,6 +15,7 @@ class MyWindow < Window
                                  color: '#B0C4DE', z: -1)
     @user_label = Text.new('')
     @username_on_screen = Text.new('')
+    @dna_text = Text.new('')
     @hello_text = Text.new('')
     @save_button = Save_button.new
     draw_user_label
@@ -128,5 +129,14 @@ class MyWindow < Window
     )
   end
 
-
+  def dna_invalidate(value)
+    @dna_text.remove
+    @dna_text = Text.new(
+      value,
+      x: 765, y: 300,
+      size: 40,
+      color: '#B0C4DE',
+      z: 10
+    )
+  end
 end

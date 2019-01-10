@@ -1,5 +1,10 @@
 # class Bonus
 class Bonus
+  attr_accessor :x,
+              :y,
+              :is_on_screen,
+              :status
+
   def initialize
     @sprite = Square.new(z: -1)
     @clip_width = 150
@@ -7,9 +12,11 @@ class Bonus
     @y = 0
     @status = 'good'
     @music = Music.new('../sound/' + @status + '-bonus.mp3')
+    @is_on_screen = false
   end
 
   def draw
+    @is_on_screen = true
     @x = rand(350)
     @y = rand(450)
     @sprite = Sprite.new(
@@ -18,6 +25,19 @@ class Bonus
       clip_width: @clip_width, time: 100, loop: true
     )
     @sprite.play
+  end
+
+  def check
+    if Time.now.to_i >= @start_time + @bonus_time && @is_on_screen == false
+      draw
+      @finish_time = @start_time + @bonus_time + 5
+      @start_time = Time.now.to_i
+      @bonus_time = @rnd.rand(5..15)
+    end
+    if Time.now.to_i >= @finish_time && @is_on_screen == true
+      remove
+      init_bonus
+    end
   end
 
   def init_bonus
@@ -30,5 +50,10 @@ class Bonus
     @start_time = Time.now.to_i
     @bonus_time = @rnd.rand(60..120)
     @finish_time = Time.now.to_i
+  end
+
+  def remove
+    @is_on_screen = false
+    @sprite.remove
   end
 end

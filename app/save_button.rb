@@ -42,8 +42,9 @@ class Save_button < Window
     @warning.remove if Time.now.to_i - @time >= 2
   end
 
-  def click(x, y)
+  def click(x, y, game)
     if x > @x && x < @x + @width && y > @y && y < @y + @height
+      game.player.db_update
       show_warning
     end
   end

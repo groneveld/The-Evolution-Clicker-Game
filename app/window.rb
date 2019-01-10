@@ -22,6 +22,16 @@ class MyWindow < Window
     draw_username_input_place
   end
 
+  def draw_coming_soon
+    Text.new(
+      'New levels coming soon...',
+      x: 181, y: 400,
+      size: 20,
+      color: '#D5F800',
+      z: 10
+    )
+  end
+
   def draw_user_label
     @user_label.remove
     @user_label = Text.new(

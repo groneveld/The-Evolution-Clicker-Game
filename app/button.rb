@@ -74,6 +74,14 @@ class Button < Window
           @music.play
           game.sprite_invalidate
         end
+      else
+        Text.new(
+          'New levels coming soon...',
+          x: 150, y: 400,
+          size: 20,
+          color: '#D5F800',
+          z: 10
+        )
       end
     end
   end

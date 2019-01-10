@@ -15,3 +15,11 @@ on :key_down do |event|
     window.init_game
   end
 end
+
+update do
+  if window.is_enter
+    window.show_input_name
+  end
+end
+
+show

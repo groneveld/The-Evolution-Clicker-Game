@@ -1,6 +1,13 @@
 require 'ruby2d'
 
+require_relative './bd'           
+require_relative './player'
+require_relative './button'
+require_relative './save_button'
+require_relative './bonus'        
+require_relative './sprite'       
 require_relative './window'
+require_relative './game' 
 
 window = MyWindow.new
 

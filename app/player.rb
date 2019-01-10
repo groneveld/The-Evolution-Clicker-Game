@@ -76,7 +76,6 @@ class Player
     change_name
     invalidate
   end
-
 end
 
 # class Creature

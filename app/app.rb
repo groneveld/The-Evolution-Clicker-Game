@@ -42,11 +42,13 @@ update do
 end
 
 on :mouse_down do |event|
-  game.bonus.click(event.x, event.y, game.player, game.creature.dna_per_sec)
-  game.player.evolve_button.click(event.x, event.y, game)
-  window.save_button.click(event.x, event.y, game)
-  if game.sprite.click(event.x, event.y)
-    game.creature.impact_on_player(game.player)
+  unless window.is_enter
+    game.bonus.click(event.x, event.y, game.player, game.creature.dna_per_sec)
+    game.player.evolve_button.click(event.x, event.y, game)
+    window.save_button.click(event.x, event.y, game)
+    if game.sprite.click(event.x, event.y)
+      game.creature.impact_on_player(game.player)
+    end
   end
 end
 

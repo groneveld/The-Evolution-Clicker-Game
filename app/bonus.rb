@@ -11,7 +11,6 @@ class Bonus
     @x = 0
     @y = 0
     @status = 'good'
-    @music = Music.new('../sound/' + @status + '-bonus.mp3')
     @is_on_screen = false
   end
 
@@ -32,7 +31,7 @@ class Bonus
       draw
       @finish_time = @start_time + @bonus_time + 5
       @start_time = Time.now.to_i
-      @bonus_time = @rnd.rand(5..15)
+      @bonus_time = @rnd.rand(60..120)
     end
     if Time.now.to_i >= @finish_time && @is_on_screen == true
       remove
@@ -61,6 +60,7 @@ class Bonus
       else
         player.summary_dna = 0
       end
+      @music = Music.new('../sound/' + @status + '-bonus.mp3')
       @music.play
       remove
     end

@@ -68,7 +68,10 @@ class Button < Window
       if @status == 'locked'
         show_warning
       else
+        game.player.levels_up
+        game.creature.evolve(game.player.evolution_level)
         @music.play
+        game.sprite_invalidate
       end
     end
   end

@@ -47,4 +47,20 @@ class Button < Window
     show
   end
 
+  def show_warning
+    @warning.remove
+    @time = Time.now.to_i
+    @warning = Text.new(
+      'Not enough DNA!',
+      x: 710, y: 50,
+      size: 17,
+      color: '#FFA07A',
+      z: 2
+    )
+  end
+
+  def check
+    @warning.remove if Time.now.to_i - @time >= 2
+  end
+
 end

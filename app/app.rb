@@ -9,6 +9,9 @@ require_relative './sprite'
 require_relative './window'
 require_relative './game'
 
+music = Music.new('../sound/background.mp3')
+music.play
+
 window = MyWindow.new
 game = 0
 

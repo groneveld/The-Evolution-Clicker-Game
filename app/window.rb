@@ -59,6 +59,10 @@ class MyWindow < Window
     draw_save_button
   end
 
+  def draw_save_button
+    @save_button.show
+  end
+
   def draw_hello_label
     @hello_text.remove
     @hello_text = Text.new(

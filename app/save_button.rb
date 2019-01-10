@@ -13,4 +13,16 @@ class Save_button < Window
     @rect = Rectangle.new(z: -1)
     @warning = Text.new('')
   end
+
+  def show
+    @rect.remove
+    @rect = Rectangle.new(x: @x, y: @y,
+                          width: @width, height: @height,
+                          color: @color, z: @z)
+    @text.remove
+    @text = Text.new('Save game!',
+                     x: 725, y: 400, size: 20,
+                     color: @text_color,
+                     z: 2)
+  end
 end

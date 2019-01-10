@@ -19,6 +19,8 @@ end
 update do
   if window.is_enter
     window.show_input_name
+  else
+  	window.save_button.check
   end
 end
 

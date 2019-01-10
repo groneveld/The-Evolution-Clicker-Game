@@ -25,4 +25,20 @@ class Save_button < Window
                      color: @text_color,
                      z: 2)
   end
+
+  def show_warning
+    @warning.remove
+    @time = Time.now.to_i
+    @warning = Text.new(
+      'Game saved!',
+      x: 720, y: 455,
+      size: 17,
+      color: '#33CCCC',
+      z: 10
+    )
+  end
+
+  def check
+    @warning.remove if Time.now.to_i - @time >= 2
+  end
 end

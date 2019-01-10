@@ -63,4 +63,13 @@ class Button < Window
     @warning.remove if Time.now.to_i - @time >= 2
   end
 
+  def click(x, y, game)
+    if x > @x && x < @x + @width && y > @y && y < @y + @height
+      if @status == 'locked'
+        show_warning
+      else
+        @music.play
+      end
+    end
+  end
 end

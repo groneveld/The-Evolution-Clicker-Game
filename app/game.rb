@@ -5,7 +5,7 @@ class Game
                 :creature,
                 :bonus
 
-  def initialize
+  def initialize(name)
     @player = Player.new(name)
     @sprite = MySprite.new
     sprite_invalidate

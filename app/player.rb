@@ -5,7 +5,8 @@ class Player
                 :dna_required,
                 :factor
 
-  def initialize
+  def initialize(name)
+    @name = name
     @summary_dna = 0
     @evolution_level = 1
     @factor = 1

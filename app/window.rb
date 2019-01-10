@@ -2,6 +2,10 @@ set title: 'The Evolution Game Clicker!', width: 1024, height: 600
 
 # class MyWindow
 class MyWindow < Window
+  attr_accessor :username,
+                :is_enter,
+                :save_button
+
 	def initialize
     Image.new('../images/background.png')
     @username = ''

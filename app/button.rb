@@ -21,4 +21,16 @@ class Button < Window
     @music.volume = 60
    end
 
+  def show
+    @rect.remove
+    @rect = Rectangle.new(x: @x, y: @y,
+                          width: @width, height: @height,
+                          color: @color, z: 1)
+    @text.remove
+    @text = Text.new('Evolve!',
+                     x: 740, y: 100, size: 20,
+                     color: @text_color,
+                     z: 2)
+  end
+
 end

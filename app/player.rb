@@ -11,6 +11,8 @@ class Player
     @factor = 1
     @dna_required = @evolution_level * 10 * @factor
     @require_text = Text.new('')
+    @evolve_button = Button.new
+    @evolve_button.draw_lock
   end
 
   def draw_require
@@ -24,11 +26,24 @@ class Player
     )
   end
 
+  def button_invalidate
+    if @summary_dna >= @dna_required
+      @evolve_button.draw_unlock
+    else
+      @evolve_button.draw_lock
+    end
+ end
+
   def levels_up
     @evolution_level += 1
     @factor += @evolution_level
     @summary_dna -= @dna_required
     @dna_required = @evolution_level * 10 * @factor
+    if @summary_dna >= @dna_required
+      @evolve_button.draw_unlock
+    else
+      @evolve_button.draw_lock
+    end
   end
 
 end

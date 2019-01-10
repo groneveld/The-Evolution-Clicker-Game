@@ -41,4 +41,10 @@ class Save_button < Window
   def check
     @warning.remove if Time.now.to_i - @time >= 2
   end
+
+  def click(x, y)
+    if x > @x && x < @x + @width && y > @y && y < @y + @height
+      show_warning
+    end
+  end
 end

@@ -24,4 +24,8 @@ update do
   end
 end
 
+on :mouse_down do |event|
+  window.save_button.click(event.x, event.y)
+end
+
 show

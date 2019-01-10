@@ -10,6 +10,7 @@ require_relative './window'
 require_relative './game'
 
 window = MyWindow.new
+game = 0
 
 on :key_down do |event|
   if window.is_enter
@@ -23,11 +24,20 @@ on :key_down do |event|
   end
 end
 
+tick = 0
+
 update do
   if window.is_enter
     window.show_input_name
   else
-  	window.save_button.check
+    game.player.draw_require
+    game.bonus.check
+    game.player.evolve_button.check
+    window.save_button.check
+    game.creature.impact_on_player(game.player) if (tick % 120).zero?
+    tick += 1
+    game.player.button_invalidate
+    window.dna_invalidate(game.player.summary_dna)
   end
 end
 

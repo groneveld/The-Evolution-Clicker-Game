@@ -15,10 +15,33 @@ class Player
     @evolution_level = 1
     @factor = 1
     @db = DataBase.new
+    if @db.player_get(@name)
+      @evolution_level = @db.level
+      @summary_dna = @db.dna
+      @factor = @db.factor
+    end
     @dna_required = @evolution_level * 10 * @factor
+    @name_of_creature = @db.creatures[@evolution_level]
+    @creature_introducing = Text.new('')
     @require_text = Text.new('')
     @evolve_button = Button.new
     @evolve_button.draw_lock
+    invalidate
+  end
+
+  def invalidate
+    @creature_introducing.remove
+    @creature_introducing = Text.new(
+      'I\'m ' + @name_of_creature + ' (level ' + @evolution_level.to_s + ')',
+      x: 80, y: 80,
+      size: 35,
+      color: 'red',
+      z: 10
+    )
+  end
+
+  def change_name
+    @name_of_creature = @db.creatures[@evolution_level]
   end
 
   def draw_require
@@ -50,6 +73,8 @@ class Player
     else
       @evolve_button.draw_lock
     end
+    change_name
+    invalidate
   end
 
 end

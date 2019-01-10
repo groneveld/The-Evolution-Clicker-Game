@@ -33,4 +33,18 @@ class Button < Window
                      z: 2)
   end
 
+  def draw_lock
+    @color = '#B0C4DE'
+    @status = 'locked'
+    @text_color = '#2F4F4F'
+    show
+  end
+
+  def draw_unlock
+    @color = '#FF6347'
+    @status = 'unlocked'
+    @text_color = '#FFFFE0'
+    show
+  end
+
 end

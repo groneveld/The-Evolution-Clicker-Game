@@ -1,9 +1,9 @@
 # class Bonus
 class Bonus
   attr_accessor :x,
-              :y,
-              :is_on_screen,
-              :status
+                :y,
+                :is_on_screen,
+                :status
 
   def initialize
     @sprite = Square.new(z: -1)
@@ -50,6 +50,20 @@ class Bonus
     @start_time = Time.now.to_i
     @bonus_time = @rnd.rand(60..120)
     @finish_time = Time.now.to_i
+  end
+
+  def click(x, y, player, value)
+    if x > @x && x < @x + 150 && y > @y && y < @y + 150
+      return unless is_on_screen
+
+      if @status == 'good'
+        player.summary_dna += value * 10
+      else
+        player.summary_dna = 0
+      end
+      @music.play
+      remove
+    end
   end
 
   def remove

@@ -95,9 +95,23 @@ describe 'DB Init ->' do
   it 'Test getting "Megabrain" creature' do
     expect(@db.creatures[23]).to eq 'Megabrain'
   end
+end
 
-  it 'Test custom init model' do
-    #@valera = Model.new(10, 20, 30, 4, 50, 60, 70)
-    #expect(@valera.health).to eq 10
+describe 'Getting user info ->' do
+  before do
+    @db = DataBase.new
+    @db.player_get('spectest')
+  end
+
+  it 'Test getting "spectest" user level' do
+    expect(@db.level).to eq 4
+  end
+
+  it 'Test getting "spectest" user dna' do
+    expect(@db.dna).to eq 176
+  end
+
+  it 'Test getting "spectest" user factor' do
+    expect(@db.level).to eq 4
   end
 end
